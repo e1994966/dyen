@@ -31,9 +31,18 @@ COPY . .
 # 安裝 Laravel 相依套件
 RUN composer install --no-dev --optimize-autoloader
 
-# 設定正確權限
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# 建立 SQLite 資料庫（如果你用 SQLite）
+RUN mkdir -p database && touch database/database.sqlite
 
+# ✅ 建立 Laravel APP KEY（避免 key 缺失導致 500）
+RUN php artisan config:clear && php artisan key:generate
+
+# ✅ 快取設定（config/route/view）
 RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
-RUN touch database/database.sqlite
+# ✅ 設定正確權限（**這是關鍵**）
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# 啟動 Apache
+CMD ["apache2-foreground"]
