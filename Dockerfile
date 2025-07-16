@@ -28,20 +28,18 @@ WORKDIR /var/www/html
 # 複製 Laravel 專案檔案
 COPY . .
 
-# 安裝 Laravel 相依套件
-RUN composer install --no-dev --optimize-autoloader
-
-# 建立 SQLite 資料庫（如果你用 SQLite）
+# 建立 SQLite 資料庫
 RUN mkdir -p database && touch database/database.sqlite
 
-RUN php artisan config:clear 
+# 安裝 Laravel 套件
+RUN composer install --no-dev --optimize-autoloader
 
-# ✅ 快取設定（config/route/view）
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
-
-# ✅ 設定正確權限（**這是關鍵**）
+# 設定正確權限
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# 快取設定
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
 # 啟動 Apache
 CMD ["apache2-foreground"]
