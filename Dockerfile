@@ -34,4 +34,6 @@ RUN composer install --no-dev --optimize-autoloader
 # 設定正確權限
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+
 RUN touch database/database.sqlite
