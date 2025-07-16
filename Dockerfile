@@ -34,8 +34,7 @@ RUN composer install --no-dev --optimize-autoloader
 # 建立 SQLite 資料庫（如果你用 SQLite）
 RUN mkdir -p database && touch database/database.sqlite
 
-# ✅ 建立 Laravel APP KEY（避免 key 缺失導致 500）
-RUN php artisan config:clear && php artisan key:generate
+RUN php artisan config:clear 
 
 # ✅ 快取設定（config/route/view）
 RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
