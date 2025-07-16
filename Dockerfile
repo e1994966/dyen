@@ -34,6 +34,4 @@ RUN composer install --no-dev --optimize-autoloader
 # 設定正確權限
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# 建立 Laravel APP KEY
-RUN php artisan config:clear && php artisan route:clear
-CMD ["apache2-foreground"]
+RUN touch database/database.sqlite
