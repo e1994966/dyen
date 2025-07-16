@@ -1,0 +1,14 @@
+/* nav.css - 岱恩商務中心導覽列樣式 */
+
+.navbar {
+    @apply bg-white shadow border-b;
+  }
+  
+  .logo {
+    @apply text-xl font-bold text-indigo-700 hover:text-indigo-800 transition;
+  }
+  
+  .nav-links a {
+    @apply text-sm text-gray-700 hover:text-indigo-600 font-medium transition;
+  }
+  

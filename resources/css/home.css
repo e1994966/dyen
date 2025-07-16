@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== 首頁 Hero 區塊樣式 ===== */
+.hero-section {
+  @apply relative bg-white overflow-hidden;
+}
+
+.hero-inner {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center;
+}
+
+.hero-title {
+  @apply text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight;
+}
+
+.hero-subtitle {
+  @apply mt-4 text-lg sm:text-xl text-gray-600;
+}
+
+.hero-cta {
+  @apply mt-8 flex justify-center gap-4;
+}
+
+.hero-cta a {
+  @apply inline-block bg-indigo-600 text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-indigo-500;
+}
+
+/* ===== 服務區塊 ===== */
+.service-section {
+  @apply bg-gray-50 py-16;
+}
+
+.service-heading {
+  @apply text-3xl font-bold text-center text-gray-800 mb-12;
+}
+
+.service-grid {
+  @apply max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.service-card {
+  @apply bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center;
+}
+
+.service-card h3 {
+  @apply text-xl font-semibold text-gray-900 mb-2;
+}
+
+.service-card p {
+  @apply text-sm text-gray-600;
+}
+
+/* ===== 辦公環境圖牆區 ===== */
+.space-gallery {
+  @apply max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6;
+}
+
+.space-gallery img {
+  @apply rounded-xl shadow-md object-cover w-full h-64;
+}
+
+/* ===== Footer 區塊樣式 ===== */
+footer {
+  @apply bg-gray-800 text-white text-sm text-center py-8;
+}
+
+footer p {
+  @apply text-xs text-gray-400;
+}
